@@ -8,7 +8,7 @@ A web app that accompanies users on the journey of learning Russian by:
 -The affordable learning application for students
 
 ## Link to artifact:
-[a link](https://docs.google.com/document/d/1xzDPuQek72qCGHcejrLsAYMtsXDgOepC/edit?usp=sharing&ouid=110717885064894218528&rtpof=true&sd=true)
+[Google docs description](https://docs.google.com/document/d/1xzDPuQek72qCGHcejrLsAYMtsXDgOepC/edit?usp=sharing&ouid=110717885064894218528&rtpof=true&sd=true)
 
 ## Authors:
 Rafik Hachana, Parth Kalkar, Danil Shalagin, Truong Nguyen
