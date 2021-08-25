@@ -14,4 +14,5 @@ A web app that accompanies users on the journey of learning Russian by:
 Rafik Hachana, Parth Kalkar, Danil Shalagin, Truong Nguyen
 
 ## Copyrights:
-This is a university project, we do not claim the authority of all source code being used here.
+This is a student project done during the course of SSAD(Software Systems Analysis and Design) Fall 2021, and therefore we claim the authority of all source code being used here.
+In addition fair use of this source code can be done within the MIT copyright license
