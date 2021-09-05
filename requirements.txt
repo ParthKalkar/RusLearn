@@ -22,7 +22,6 @@ colorama==0.4.3
 constantly==15.1.0
 coverage==5.5
 cryptography==2.8
-cupshelpers==1.0
 cycler==0.10.0
 dask==2.8.1+dfsg
 dbus-python==1.2.16
