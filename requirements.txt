@@ -1,4 +1,3 @@
-apturl
 argcomplete==1.12.3
 argon2-cffi==20.1.0
 asciitree==0.3.3
