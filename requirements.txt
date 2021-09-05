@@ -23,7 +23,7 @@ constantly==15.1.0
 coverage==5.5
 cryptography==2.8
 cycler==0.10.0
-dask==2.8.1+dfsg
+dask
 dbus-python==1.2.16
 debugpy==1.4.1
 decorator==4.4.2
