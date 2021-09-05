@@ -1,0 +1,1 @@
+web: gunicorn ruslearn.wsgi --log-file -
