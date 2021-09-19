@@ -13,7 +13,7 @@ import os, sys
 # sys.path.append('ruslearn')
 #
 # # add the virtualenv site-packages path to the sys.path
-sys.path.append('venv/lib/python3.8/site-packages')
+# sys.path.append('venv/lib/python3.8/site-packages')
 
 
 
