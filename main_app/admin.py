@@ -3,16 +3,16 @@ from main_app.models import SubscriptionTier, Subscription, Users, UserPackStatu
 
 
 # Register your models here.
-@admin.site.register(SubscriptionTier)
+@admin.register(SubscriptionTier)
 class SubscriptionTierAdmin(admin.ModelAdmin):
     pass
 
 
-@admin.site.register(Subscription)
+@admin.register(Subscription)
 class SubscriptionAdmin(admin.ModelAdmin):
     pass
 
 
-@admin.site.register(Users)
+@admin.register(Users)
 class UsersAdmin(admin.ModelAdmin):
     pass

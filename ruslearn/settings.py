@@ -31,7 +31,7 @@ ALLOWED_HOSTS = ['still-depths-20210.herokuapp.com', 'ruslearn-env.eba-mdexprbs.
 # Application definition
 
 INSTALLED_APPS = [
-    'ruslearn',
+    'main_app',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
