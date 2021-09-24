@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-ow&1f5(o7g+(_-j3knwnw0usvvq=+=ul4155jvavf+qfo4b5%#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['still-depths-20210.herokuapp.com', 'ruslearn-env.eba-mdexprbs.us-west-2.elasticbeanstalk.com', '127.0.0.1']
+ALLOWED_HOSTS = ['still-depths-20210.herokuapp.com', 'ruslearn-dev.us-west-2.elasticbeanstalk.com', '127.0.0.1']
 
 
 # Application definition
