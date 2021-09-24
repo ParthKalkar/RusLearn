@@ -1,4 +1,7 @@
 # RusLearn
+[![Pylint](https://github.com/ParthKalkar/RusLearn/actions/workflows/pylint.yml/badge.svg)](https://github.com/ParthKalkar/RusLearn/actions/workflows/pylint.yml)
+[![Deployment](https://github.com/ParthKalkar/RusLearn/actions/workflows/deploy.yml/badge.svg)](https://github.com/ParthKalkar/RusLearn/actions/workflows/deploy.yml)
+
 A crowd-sourced platform for learning the Russian language through flashcards and memorization techniques.
 
 You can try RusLearn [here](http://ruslearn-dev.us-west-2.elasticbeanstalk.com/).
