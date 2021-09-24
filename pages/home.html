@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="homepage_style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat&display=swap">
+</head>
+
+<body>
+    <p id="user_info" ><b style="font-size: 1.5vw;"><u><br>User Info:</u><br><br></b>Name: Truong Nguyen<br> <br> Subscription: VIP</p>
+    <h1>Homepage</h1>
+    <form action="">
+        <input type="text" name=text id="txt" required placeholder="Package name">
+        <button type="submit" class="btn-list">
+            <i class="fa fa-plus-circle" aria-hidden="true"></i>
+        </button>
+    </form>
+    <div class="container">
+        <ul>
+            <!-- <li>
+                <button class = "floated">Edit<br><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                <button class = "floated">Review<br><i class="fa fa-eye" aria-hidden="true"></i></button>
+                <span>x</span>
+            </li> -->
+        </ul>
+    </div>
+
+    <script>
+        const inputText = document.querySelector("#txt");
+        const myButton = document.querySelector(".btn-list");
+        const list = document.querySelector(".container ul");
+        myButton.addEventListener("click", (e) => {
+            if (inputText.value != "") {
+                e.preventDefault();
+                const myLi = document.createElement("li");
+                myLi.innerText = inputText.value;
+                list.appendChild(myLi);
+                const mySpan = document.createElement('span');
+                mySpan.innerText = "x";
+                myLi.appendChild(mySpan);
+                //create edit and review button
+                myEditButton = document.createElement("button");
+                myEditButton.innerText = "Edit";
+                myEditButton.setAttribute("id", "id_bttn"); 
+                myLi.appendChild(myEditButton);
+                myReviewButton = document.createElement("button");
+                myReviewButton.innerText = "Review";
+                myReviewButton.setAttribute("id", "id_rvw");
+                myLi.appendChild(myReviewButton)
+            }
+            const close = document.querySelectorAll('span');
+            for(let i = 0; i<close.length;i++){
+                close[i].addEventListener('click', ()=>{
+                    close[i].parentElement.style.opacity = 0;
+                    setTimeout(()=>{
+                        close[i].parentElement.style.display="none";
+                        close[i].parentElement.remove();
+                    }, 500);
+
+                })
+            }
+            inputText.value = "";
+        });
+    </script>
+</body>
+
+</html>
