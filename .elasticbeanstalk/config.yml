@@ -1,6 +1,6 @@
 branch-defaults:
   main:
-    environment: ruslearn-env
+    environment: ruslearn-dev
     group_suffix: null
 global:
   application_name: ruslearn
