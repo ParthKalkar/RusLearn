@@ -1,7 +1,7 @@
 # RusLearn
 A crowd-sourced platform for learning the Russian language through flashcards and memorization techniques.
 
-You can try RusLearn [here](https://still-depths-20210.herokuapp.com/).
+You can try RusLearn [here](http://ruslearn-dev.us-west-2.elasticbeanstalk.com/).
 
 ## Description:
 In its current stage, RusLearn is a web-application that accompanies users on the journey of learning the Russian language by:
