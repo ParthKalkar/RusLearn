@@ -15,7 +15,7 @@ class Choice(models.Model):
 class SubscriptionTier(models.Model):
     TierID = models.UUIDField(primary_key=True, default=uuid.uuid4, unique=True, editable=False)  # integer PRIMARY KEY,
     monthlyPrice = models.IntegerField()  # integer NOT NULL,
-    yearlyPrice = models.IntegerField()  # integer NOT NULL,
+    # yearlyPrice = models.IntegerField()  # integer NOT NULL,
     maxReviewsPerDay = models.IntegerField()  # integer NOT NULL,
     communityPacksAvailable = models.BooleanField()  # boolean NOT NULL,
     maxLanguages = models.IntegerField()  # integer NOT NULL,
