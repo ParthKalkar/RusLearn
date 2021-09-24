@@ -14,8 +14,9 @@ import os, sys
 #
 # # add the virtualenv site-packages path to the sys.path
 # sys.path.append('venv/lib/python3.8/site-packages')
-
-
+# os.chdir('..')
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.append(BASE_DIR)
 
 from django.core.wsgi import get_wsgi_application
 
