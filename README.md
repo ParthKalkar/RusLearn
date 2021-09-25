@@ -10,9 +10,18 @@ effort of understanding these learning techniques by implementing everything int
 of focus in the short learning sessions. RusLearn also offers premium tier subscriptions, which offer you further high quality content with the flashcards, such as video, audio, and external links. 
 Moreover, you should know that RusLearn offers more than just flashcards for you to review. If you have confidence in your knowledge of a certain subject or language, you can contribute to the platform with your own flashcards and earn money with them! 
 A user can select the “tutor” subscription tier, which instead of taking your money, gives you money (depending on how well your flashcard packs are doing, and how popular they are).
-
+---
 ## Table of contents
-- [Business Relevance]()
+- [Business Relevance](https://github.com/ParthKalkar/RusLearn#business-relevance)
+- [Progress](https://github.com/ParthKalkar/RusLearn#what-we-have-so-far)
+- [Stakeholders](https://github.com/ParthKalkar/RusLearn#stakeholders)
+- [Server Architecture](https://github.com/ParthKalkar/RusLearn#server-architecture)
+- [UML design diagrams](https://github.com/ParthKalkar/RusLearn#sample-uml-diagrams-of-the-features)
+- [User Interface Design](https://github.com/ParthKalkar/RusLearn#user-interface-design)
+- [More artifacts (RUP)](https://github.com/ParthKalkar/RusLearn#more-artifacts)
+- [Developer guide](https://github.com/ParthKalkar/RusLearn#developers-guide)
+- [Authors & Copyright](https://github.com/ParthKalkar/RusLearn#authors)
+---
 ## Business relevance:
 #### Competitors
 Flashcards app (like Anki, Quizlet, Memrise,...), and platforms for earning through making flashcards (like Stuvia, ProProfs, …).
