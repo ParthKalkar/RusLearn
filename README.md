@@ -28,6 +28,44 @@ In the long-term, RusLearn might extend into a multi-platform learning applicati
 ## Link to the project's artifacts:
 [Descriptions](https://docs.google.com/document/d/1xzDPuQek72qCGHcejrLsAYMtsXDgOepC/edit?usp=sharing&ouid=110717885064894218528&rtpof=true&sd=true)
 
+## Developer's guide
+RusLearn is open-source. Anyone is welcome to contribute given that they follow our [code of conduct](./CODE_OF_CONDUCT.md).
+### Technical stack
+The platform is mainly built around a *Django* backend server, that connects the frontend *React.js*
+server to a *PostgreSQL* database using a RESTful JSON API. 
+
+
+The platform also uses other 3rd party services such as:
+- *The PayPal API*: used for payouts to tutors on the platform.
+- *The Stripe API*: used to receive student monthly subscription payments.
+- *Google Firebase Authentication*: Used to integrate with Google accounts.
+
+### Installation guide (*Debian Linux environment*)
+First, clone the GitHub repository in your directory of choice:
+```commandline
+git clone git@github.com:ParthKalkar/RusLearn.git
+```
+Make sure you have Python installed:
+```commandline
+sudo apt-get install python3 python3-pip virtualenv
+```
+In the project's directory, create a Python virtual environment and activate it:
+```commandline
+virtualenv venv && source venv/bin/activate
+```
+Now install all the Python dependencies:
+```commandline
+pip3 install -r requirements.txt
+```
+To migrate the database and create the database tables:
+```commandline
+python3 manage.py makemigrations && python3 manage.py migrate
+```
+Once the migrations are done, you will be able to run the server locally using:
+```commandline
+python3 manage.py runserver
+```
+---
 ## Authors:
 *[Rafik Hachana](https://github.com/RafikHachana)*, *[Parth Kalkar](https://github.com/ParthKalkar)*, *[Danil Shalagin](https://github.com/danilXX2000)*, *[Truong Nguyen](https://github.com/enestydarealmc)*
 
