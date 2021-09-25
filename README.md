@@ -2,14 +2,31 @@
 [![Pylint](https://github.com/ParthKalkar/RusLearn/actions/workflows/pylint.yml/badge.svg)](https://github.com/ParthKalkar/RusLearn/actions/workflows/pylint.yml)
 [![Deployment](https://github.com/ParthKalkar/RusLearn/actions/workflows/deploy.yml/badge.svg)](https://github.com/ParthKalkar/RusLearn/actions/workflows/deploy.yml)
 
-With RusLearn, we want to provide a large platform built on the idea and learning philosophy of flashcards: Simple and atomic units of knowledge, that have been 
+> With RusLearn, we want to provide a large platform built on the idea and learning philosophy of flashcards: Simple and atomic units of knowledge, that have been 
 scientifically proven to be one of the most effective learning methods, especially when used in combination with techniques such as spaced repetition. RusLearn saves you the time and 
 effort of understanding these learning techniques by implementing everything internally and guiding you completely through your learning experience, with no extra effort on your side except the small bursts 
 of focus in the short learning sessions. RusLearn also offers premium tier subscriptions, which offer you further high quality content with the flashcards, such as video, audio, and external links. 
 Moreover, you should know that RusLearn offers more than just flashcards for you to review. If you have confidence in your knowledge of a certain subject or language, you can contribute to the platform with your own flashcards and earn money with them! 
 A user can select the “tutor” subscription tier, which instead of taking your money, gives you money (depending on how well your flashcard packs are doing, and how popular they are).
 
-## Description:
+## Business relevance:
+#### Competitors
+Flashcards app (like Anki, Quizlet, Memrise,...), and platforms for earning through making flashcards (like Stuvia, ProProfs, …).
+#### Challenge
+- Many similar apps on the market, but none of them provide tutor roles, or features like batch input when creating flashcards (input with multiple lines of words)
+- Most of the learning packs created serve the community for free, the owner gains nothing but popularity
+#### How we solve
+- Provide batch input for users
+- Enable money-making functionality for users who reach certain criteria (similar to Spotify, Youtube...)
+#### What make us unique
+- Financial-driven motivation: there will be two types of users: those who learn and those who create to not just share but earn money.
+- Since people actually pay to subscribe to a pack, the community review of a pack is improved as well as the quality of it.
+#### Objectives
+- Create a marketed version of quizlet
+- Solve some tiny user experience details the apps on market is having 
+
+
+## What we have so far:
 In its current stage, RusLearn is a web-application that accompanies users on the journey of learning the Russian language by:
 - Applying flashcards memorizing technique
   
@@ -23,7 +40,17 @@ The initial idea of RusLearn stems from the following problems:
 - The similar applications don't offer the same set of features
 - Costly subscription that can't be afforded by students.
 
-In the long-term, RusLearn might extend into a multi-platform learning application, with support for many languages.
+## Stakeholders
+
+
+| **Stakeholder’s Name** | **Roles** | **Responsibilities** |
+| ----- | ----- | ------ |
+| **Tester** | - Testing functionalities of the application - Set up the benchmark environment - Run the functionality | Note down the results and report bugs 
+| **Developers** | Develop the application | Be aware of all user stories, FR (functional requirement), and NFR (non-functional requirement) - Apply the proper technology to develop each submodule - Test, debug repeat, comment the code - Define and document requirements - Provide information, estimates and feedback to the Project manager
+|**Project Manager**|Planning, executing, monitoring, controlling, and closing out the project.|Accountable for the entire project scope - The project resource and budget - The success or failure of the project
+|**Product Owner** | Set deadlines, financial management, propose requirements, validate project | Schedule delivery deadline (hard/soft) - Describe what customers expect - Present the deliveries to the customer - Handle the budget/bargaining - Validate if each delivery matches customer’s needs: validation goals
+|**Investor / Client** |Pay, experience, require |State out core ideas of the product, how it should look, how it should function. - Be on time on payment - Confirm if each delivery satisfies them.
+
 
 ## Link to the project's artifacts:
 [Descriptions](https://docs.google.com/document/d/1xzDPuQek72qCGHcejrLsAYMtsXDgOepC/edit?usp=sharing&ouid=110717885064894218528&rtpof=true&sd=true)
