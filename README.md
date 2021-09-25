@@ -65,9 +65,11 @@ The initial idea of RusLearn stems from the following problems:
 |**Investor / Client** |Pay, experience, require |State out core ideas of the product, how it should look, how it should function. - Be on time on payment - Confirm if each delivery satisfies them.
 ---
 ## Server Architecture
-
+![arch](./Docs/Architecture.png)
 ## Sample UML diagrams of the features
-
+### Sequence diagram
+### Database ERD diagram
+![erd](./Docs/DB_Relational_Model.png)
 ## User Interface Design
 ![signup](./Screens/Signup%20-1.jpg)
 ![cover](./Screens/Cover.jpg)
