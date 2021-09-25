@@ -50,10 +50,23 @@ The initial idea of RusLearn stems from the following problems:
 |**Project Manager**|Planning, executing, monitoring, controlling, and closing out the project.|Accountable for the entire project scope - The project resource and budget - The success or failure of the project
 |**Product Owner** | Set deadlines, financial management, propose requirements, validate project | Schedule delivery deadline (hard/soft) - Describe what customers expect - Present the deliveries to the customer - Handle the budget/bargaining - Validate if each delivery matches customer’s needs: validation goals
 |**Investor / Client** |Pay, experience, require |State out core ideas of the product, how it should look, how it should function. - Be on time on payment - Confirm if each delivery satisfies them.
+---
+## Server Architecture
 
+## Sample UML diagrams of the features
 
-## Link to the project's artifacts:
-[Descriptions](https://docs.google.com/document/d/1xzDPuQek72qCGHcejrLsAYMtsXDgOepC/edit?usp=sharing&ouid=110717885064894218528&rtpof=true&sd=true)
+## User Interface Design
+![signup](./Screens/Signup%20-1.jpg)
+![cover](./Screens/Cover.jpg)
+![login](./Screens/Login.jpg)
+![plans](./Screens/Subscriptions.jpg)
+## More artifacts:
+If your looking for any of the following:
+- RUP development plan
+- Functional requirements
+- Non-functional requirements
+- User stories
+You can find them in [this document](https://docs.google.com/document/d/1xzDPuQek72qCGHcejrLsAYMtsXDgOepC/edit?usp=sharing&ouid=110717885064894218528&rtpof=true&sd=true)
 
 ## Developer's guide
 RusLearn is open-source. Anyone is welcome to contribute given that they follow our [code of conduct](./CODE_OF_CONDUCT.md).
