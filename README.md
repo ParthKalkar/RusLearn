@@ -68,6 +68,9 @@ The initial idea of RusLearn stems from the following problems:
 ![arch](./Docs/Architecture.png)
 ## Sample UML diagrams of the features
 ### Sequence diagram
+![seq](./Docs/Sequence.png)
+### Use-Case Diagram
+![usecase](./Docs/Use-Case%20diagram.png)
 ### Database ERD diagram
 ![erd](./Docs/DB_Relational_Model.png)
 ## User Interface Design
