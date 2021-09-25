@@ -1,6 +1,8 @@
-# [RusLearn](http://ruslearn-dev.us-west-2.elasticbeanstalk.com/)
 [![Pylint](https://github.com/ParthKalkar/RusLearn/actions/workflows/pylint.yml/badge.svg)](https://github.com/ParthKalkar/RusLearn/actions/workflows/pylint.yml)
 [![Deployment](https://github.com/ParthKalkar/RusLearn/actions/workflows/deploy.yml/badge.svg)](https://github.com/ParthKalkar/RusLearn/actions/workflows/deploy.yml)
+[![GitHub stars](https://img.shields.io/github/stars/ParthKalkar/RusLearn)](https://github.com/ParthKalkar/RusLearn)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/yegor256/takes/blob/master/LICENSE.txt)
+# [RusLearn](http://ruslearn-dev.us-west-2.elasticbeanstalk.com/)
 
 > With RusLearn, we want to provide a large platform built on the idea and learning philosophy of flashcards: Simple and atomic units of knowledge, that have been 
 scientifically proven to be one of the most effective learning methods, especially when used in combination with techniques such as spaced repetition. RusLearn saves you the time and 
@@ -9,6 +11,8 @@ of focus in the short learning sessions. RusLearn also offers premium tier subsc
 Moreover, you should know that RusLearn offers more than just flashcards for you to review. If you have confidence in your knowledge of a certain subject or language, you can contribute to the platform with your own flashcards and earn money with them! 
 A user can select the “tutor” subscription tier, which instead of taking your money, gives you money (depending on how well your flashcard packs are doing, and how popular they are).
 
+## Table of contents
+- [Business Relevance]()
 ## Business relevance:
 #### Competitors
 Flashcards app (like Anki, Quizlet, Memrise,...), and platforms for earning through making flashcards (like Stuvia, ProProfs, …).
