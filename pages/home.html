@@ -9,6 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="card-style.css">
 </head>
 
 <body>
@@ -18,7 +19,7 @@
         </p>
     </div>
     <form action="">
-        <input type="text" name=text id="txt" required placeholder="Package name">
+        <!-- <input type="text" name=text id="txt" required placeholder="Package name"> -->
         <button type="button" class="btn btn-list btn-primary" data-bs-toggle="modal" data-bs-target=#addPackModal>
             <i class="fa fa-plus-circle" aria-hidden="true"></i>
         </button>
@@ -26,18 +27,23 @@
     <div class="pack_container">
         <ul>
             <li><span id="packName">Pack Name</span>
-                <button class="floated">Edit<br><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                <button class="floated">Review<br><i class="fa fa-eye" aria-hidden="true"></i></button>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editPackModal">
+                    Edit<br><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                </button>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reviewPackModal">
+                    Review<br><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                </button>
+
                 <span>x</span>
             </li>
         </ul>
     </div>
 
-    <div class="modal fade" id="addPackModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="addPackModal" tabindex="-1" aria-labelledby="addPackModalTitle" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <h5 class="modal-title" id="addPackModalTitle">Add Pack</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -53,8 +59,7 @@
                                 </div>
                                 <div class="col" id="newPackContainerCol">
                                     <p>Automatically initiate your pack</p>
-                                    <input type="text" placeholder="Number of words"
-                                        id="newPackTargetLang"><br>
+                                    <input type="text" placeholder="Number of words" id="newPackTargetLang"><br>
                                 </div>
                             </div>
                         </div>
@@ -68,6 +73,46 @@
                     <button type="button" class="btn btn-primary">Save changes</button>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="editPackModal" tabindex="-1" aria-labelledby="editPackModalTitle" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editPackModalTitle">Pack Edit</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="reviewPackModal" tabindex="-1" aria-labelledby="reviewPackModalTitle"
+        aria-hidden="true">
+        <div class="modal-dialog" id="reviewPackModalDialog">
+            <!-- <div class="modal-content" id="reviewPackModalContent"> -->
+                    <label class="modal-content" id = "reviewPackModalContent">
+                        <input type="checkbox" id="reviewPackModalCheckBox">
+                        <div class="flip-card">
+                            <div class="front">
+                                <img src="images/apple.png" alt="" width="20%" height="20%"/>
+                                <p>Click to flip</p>
+                            </div>
+                            <div class="back">
+                                <h1>Яблоко</h1>
+                                <hr />
+                                <p class="click">Click to flip</p>
+                            </div>
+                        </div>
+                    </label>
+            <!-- </div> -->
         </div>
     </div>
 
