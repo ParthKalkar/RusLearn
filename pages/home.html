@@ -20,7 +20,7 @@
     </div>
     <form action="">
         <!-- <input type="text" name=text id="txt" required placeholder="Package name"> -->
-        <button type="button" class="btn btn-list btn-primary" data-bs-toggle="modal" data-bs-target=#addPackModal>
+        <button type="button" class="btn btn-list btn-primary" data-bs-toggle="modal" data-bs-target="#addPackModal">
             <i class="fa fa-plus-circle" aria-hidden="true"></i>
         </button>
     </form>
@@ -34,13 +34,15 @@
                     Review<br><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                 </button>
 
-                <span>x</span>
+                <span><i class="fa fa-times" aria-hidden="true"></i></span>
             </li>
         </ul>
     </div>
 
-    <div class="modal fade" id="addPackModal" tabindex="-1" aria-labelledby="addPackModalTitle" aria-hidden="true">
-        <div class="modal-dialog">
+    <!-- Add Pack Modal -->
+
+    <div class="modal fade" id="addPackModal" tabindex="-1" aria-labelledby="#addPackModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="addPackModalTitle">Add Pack</h5>
@@ -63,28 +65,45 @@
                                 </div>
                             </div>
                         </div>
-                        <button type="button" class="btn btn-list btn-primary">
-                            Create
-                        </button>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-primary">Create</button>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- Edit Pack Modal -->
+
     <div class="modal fade" id="editPackModal" tabindex="-1" aria-labelledby="editPackModalTitle" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="editPackModalTitle">Pack Edit</h5>
+                    <h5 class="modal-title" id="editPackModalTitle">Pack Name</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    ...
+                <div class="modal-body" id="editPackModalBody">
+                    <ul>
+                        <li>
+                            <span>Source Word</span> - <span>Target Word</span>
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#">
+                                Edit<br><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                            </button>
+                            <span><i class="fa fa-times" aria-hidden="true"></i>
+                            </span>
+                        </li>
+                    </ul>
+
+                    <form action="">
+                        <!-- <input type="text" name=text id="txt" required placeholder="Package name"> -->
+                        <button type="button" class="btn btn-list btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#addCardModal">
+                            <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                        </button>
+                    </form>
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -94,25 +113,64 @@
         </div>
     </div>
 
+    <!-- Review Pack Modal -->
+
     <div class="modal fade" id="reviewPackModal" tabindex="-1" aria-labelledby="reviewPackModalTitle"
         aria-hidden="true">
-        <div class="modal-dialog" id="reviewPackModalDialog">
-            <!-- <div class="modal-content" id="reviewPackModalContent"> -->
-                    <label class="modal-content" id = "reviewPackModalContent">
-                        <input type="checkbox" id="reviewPackModalCheckBox">
-                        <div class="flip-card">
-                            <div class="front">
-                                <img src="images/apple.png" alt="" width="20%" height="20%"/>
-                                <p>Click to flip</p>
-                            </div>
-                            <div class="back">
-                                <h1>Яблоко</h1>
-                                <hr />
-                                <p class="click">Click to flip</p>
+        <div class="modal-dialog modal-xl" id="reviewPackModalDialog">
+            <label class="modal-content" id="reviewPackModalContent">
+                <input type="checkbox" id="reviewPackModalCheckBox">
+                <div class="flip-card">
+                    <div class="front">
+                        <img src="images/apple.png" alt="" width="20%" height="20%" />
+                        <p>Click to flip</p>
+                    </div>
+                    <div class="back">
+                        <h1>Яблоко</h1>
+                        <hr />
+                        <p class="click">Click to flip</p>
+                    </div>
+                </div>
+            </label>
+        </div>
+    </div>
+
+    <!-- Add card modal -->
+
+    <div class="modal fade" id="addCardModal" tabindex="-1" aria-labelledby="#addCardModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addCardModalTitle">Add Card</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="" id="newCardForm">
+                        <div class="container" id="newCardContainer">
+                            <div class="row" id="newCardContainerRow">
+                                <div class="col" id="newCardContainerCol">
+                                    <label for="newCardPic">Choose an optional picture for your card</label>
+                                    <input type="file" name="newCardPic" id="newCardPic"
+                                        accept="image/png, image/jpeg"><br>
+                                    <input type="text" placeholder="Source word of the new card"
+                                        id="newCardSourceWord"><br>
+                                    <input type="text" placeholder="Target word of the new card"
+                                        id="newCardTargetWord"><br>
+                                </div>
+
+                                <div class="col" id="newCardContainerCol">
+                                    <p>Batch-input new cards</p>
+                                    <textarea placeholder="For example:&#10;яблоко - apple&#10;банан - banana" id="newCardBatchInput" rows="50" cols="50"></textarea><br>
+                                </div>
                             </div>
                         </div>
-                    </label>
-            <!-- </div> -->
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Create</button>
+                </div>
+            </div>
         </div>
     </div>
 
