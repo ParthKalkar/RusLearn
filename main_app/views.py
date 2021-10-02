@@ -5,6 +5,9 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 
+from models import UserPackStatus, UserCardStatus
+import datetime
+from django.http.response import JsonResponse
 
 # Create your views here.
 from django.urls import reverse
@@ -66,3 +69,19 @@ def login_request(request):
         form = AuthenticationForm()
         register_form = UserCreationForm()
     return render(request, 'registration/login.html', {'form': form, 'register_form': register_form})
+
+
+@login_required
+def get_next_card(request):
+    user_id = request.user.UserID
+    pack_id = request.form.PackID
+
+    pack_status_id = UserPackStatus.objects.get(UserID = user_id,PackID = pack_id).PackStatusID
+    status_for_card = UserCardStatus.objects.filter(PackStatusIP = pack_status_id).order_by('lastReviewedTime')[0]
+    status_for_card.lastReviewedTime =  datetime.datetime.today()
+
+    card = status_for_card.CardID
+    print(f"found card: {[card.sourceText,card.targetText]}")
+    card = {'sourceText':card.sourceText,'targetText':card.targetText}
+    json_dump = JsonResponse.dumps(card)
+    return json_dump

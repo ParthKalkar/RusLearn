@@ -134,7 +134,7 @@ class UserCardStatus(models.Model):
                                      on_delete=models.CASCADE)  # integer REFERENCES UserPackCard (PackStatusID),
     CardID = models.ForeignKey(FlashCard, on_delete=models.CASCADE)  # integer REFERENCES FlashCard (FlashCardID),
     cardStrength = models.FloatField(default=0)  # numeric NOT NULL,
-    lastReviewedTime = models.DateField()  # date NOT NULL,
+    lastReviewedTime = models.DateTimeField()  # date NOT NULL,
     firstReviewedTime = models.DateField()  # date NOT NULL
 
 
