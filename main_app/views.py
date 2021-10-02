@@ -11,7 +11,7 @@ from django.contrib import messages
 from django.urls import reverse
 
 
-# @login_required
+@login_required
 def home(request):
     user_profile = request.user
     return render(request, 'home.html', context={
@@ -35,7 +35,7 @@ def register(request):
             login(request, user)
             return redirect('home')
         messages.error(request, "not valid")
-    form = CustomUserCreationForm()
+    form = CustomUserCreationForm(request.POST)
     context = {
         'register_form': form,
         'form': AuthenticationForm()
@@ -64,6 +64,6 @@ def login_request(request):
 
 
     else:
-        form = AuthenticationForm()
+        form = AuthenticationForm(request.POST)
         register_form = CustomUserCreationForm()
     return render(request, 'registration/login.html', {'form': form, 'register_form': register_form})
