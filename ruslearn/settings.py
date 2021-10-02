@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'ruslearn.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': str(BASE_DIR / "db.sqlite3"),
+        'NAME': str(BASE_DIR / "tmp/db.sqlite3"),
     }
 }
 
