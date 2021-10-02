@@ -39,5 +39,8 @@ class CustomUserAdmin(UserAdmin):
     search_fields = ('email',)
     ordering = ('email',)
 
+@admin.register(CardPack)
+class AdminCardPack(admin.ModelAdmin):
+    pass
 
 # admin.site.register(CustomUser, CustomUserAdmin)

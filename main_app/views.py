@@ -6,7 +6,7 @@ from .forms import CustomUserCreationForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 
-from models import UserPackStatus, UserCardStatus
+from .models import UserPackStatus, UserCardStatus, CardPack
 import datetime
 from django.http.response import JsonResponse
 
@@ -17,8 +17,10 @@ from django.urls import reverse
 @login_required
 def home(request):
     user_profile = request.user
+    packs = CardPack.objects.filter(createBy=request.user)
     return render(request, 'home.html', context={
-        'user_profile': user_profile
+        'user_profile': user_profile,
+        'packs': packs
     })
     # return HttpResponse('Hello, World!')
 
@@ -86,3 +88,8 @@ def get_next_card(request):
     card = {'sourceText':card.sourceText,'targetText':card.targetText}
     json_dump = JsonResponse.dumps(card)
     return json_dump
+
+@login_required
+def add_new_pack(request):
+    pack = CardPack(createBy=request.user,
+                    )

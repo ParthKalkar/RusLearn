@@ -9,7 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="card-style.css">
+    <link rel="stylesheet" href="./templates/card-style.css">
 </head>
 
 <body>
@@ -81,19 +81,25 @@
 <!--                    </li>-->
 <!--                </ul>-->
 <!--            </div>-->
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Pack Name</h5>
-                    <p class="card-text"><button type="button" class="btn btn-primary" data-bs-toggle="modal"
+            {% if packs %}
+            {% for p in packs %}
+            <div class="card bg-light m-3 shadow">
+                <div class="card-body row">
+                    <h5 class="card-title col">{{p.Name}}</h5>
+                    <p class="card-text col d-flex justify-content-end"><button type="button" class="btn btn-secondary m-2" data-bs-toggle="modal"
                                 data-bs-target="#editPackModal">
                             Edit<br><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                         </button>
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                        <button type="button" class="btn btn-success m-2" data-bs-toggle="modal"
                                 data-bs-target="#reviewPackModal">
                             Review<br><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                         </button></p>
                 </div>
             </div>
+            {% endfor %}
+            {% else %}
+            <h6 class="lead">It seems that you don't have any card packs yet...</h6>
+            {% endif %}
         </div>
     </div>
     <div class="row">
