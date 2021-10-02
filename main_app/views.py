@@ -2,6 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from .forms import CustomUserCreationForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 
@@ -10,9 +11,9 @@ from django.contrib import messages
 from django.urls import reverse
 
 
-@login_required
+# @login_required
 def home(request):
-    user_profile = request.user.XP_points
+    user_profile = request.user
     return render(request, 'home.html', context={
         'user_profile': user_profile
     })
@@ -20,21 +21,21 @@ def home(request):
 
 
 def register(request):
-    if request.user:
+    if request.user.is_authenticated:
         return redirect('home')
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = CustomUserCreationForm(request.POST)
         print("form received")
         if form.is_valid():
             print("the form is valid")
             form.save()
-            username = form.cleaned_data['username']
+            username = form.cleaned_data['email']
             password = form.cleaned_data['password1']
             user = authenticate(username=username, password=password)
             login(request, user)
             return redirect('home')
         messages.error(request, "not valid")
-    form = UserCreationForm()
+    form = CustomUserCreationForm()
     context = {
         'register_form': form,
         'form': AuthenticationForm()
@@ -64,5 +65,5 @@ def login_request(request):
 
     else:
         form = AuthenticationForm()
-        register_form = UserCreationForm()
+        register_form = CustomUserCreationForm()
     return render(request, 'registration/login.html', {'form': form, 'register_form': register_form})
