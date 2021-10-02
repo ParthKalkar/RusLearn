@@ -46,6 +46,21 @@
                     </div>
                 </div>
             </form>
+            {% if form and form.errors %}
+            <div class="row mt-2 pt-2">
+                <div class="col">
+                    <div class="alert alert-danger d-flex align-items-center" role="alert">
+                        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
+                            <use xlink:href="#exclamation-triangle-fill"/>
+                        </svg>
+                        <div>
+                            {{ form.errors }}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
 
         </div>
         <div class="col border rounded m-2 bg-light shadow">
@@ -116,6 +131,21 @@
                         <button class="btn btn-secondary disabled">Sign in with Google account</button>
                     </div>
                 </div>
+<!--                {{ register_form }}-->
+                {% if register_form.errors %}
+                <div class="row mt-2 pt-2">
+                    <div class="col">
+                        <div class="alert alert-danger d-flex align-items-center" role="alert">
+                            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
+                                <use xlink:href="#exclamation-triangle-fill"/>
+                            </svg>
+                            <div>
+                                {{ register_form.errors }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
             </form>
         </div>
     </div>

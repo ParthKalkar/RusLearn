@@ -3,3 +3,4 @@ venv
 __pycache__
 # Elastic Beanstalk Files
 db.sqlite3
+.elasticbeanstalk/logs

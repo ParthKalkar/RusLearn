@@ -1,4 +1,10 @@
 from django.db import models
+from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from .managers import CustomUserManager
+from django.utils.translation import ugettext_lazy as _
+from django.contrib.auth.models import AbstractUser
 
 import uuid
 
@@ -40,22 +46,46 @@ class Subscription(models.Model):
     paymentInfo = models.TextField()  # text NOT NULL
 
 
-class Users(models.Model):
-    # CREATE TYPE regService AS ENUM ('Google');
-    REGISTATION_SERVICE = [
-        ("go", "Google"),
-        ("no", "No")
-    ]
-    UserID = models.UUIDField(primary_key=True, default=uuid.uuid4, unique=True,
-                              editable=False)  # integer NOT NULL Primary,
-    Username = models.CharField(max_length=40, unique=True)  # text UNIQUE,
-    registrationDate = models.DateField(auto_now=True)  # date NOT NULL,
-    registrationService = models.CharField(max_length=2, choices=REGISTATION_SERVICE)  # regService,
-    email = models.EmailField(unique=True, blank=True, null=True)  # text UNIQUE NULL,
-    paswordHash = models.CharField(max_length=40, null=True)  # text NULL,
+# class Users(models.Model):
+#     # CREATE TYPE regService AS ENUM ('Google');
+#     REGISTATION_SERVICE = [
+#         ("go", "Google"),
+#         ("no", "No")
+#     ]
+#     UserID = models.UUIDField(primary_key=True, default=uuid.uuid4, unique=True,
+#                               editable=False)  # integer NOT NULL Primary,
+#     user = models.OneToOneField(User, on_delete=models.CASCADE)
+#     Username = models.CharField(max_length=40, unique=True)  # text UNIQUE,
+#     registrationDate = models.DateField(auto_now=True)  # date NOT NULL,
+#     registrationService = models.CharField(max_length=2, choices=REGISTATION_SERVICE)  # regService,
+#     email = models.EmailField(unique=True, blank=True, null=True)  # text UNIQUE NULL,
+#     # paswordHash = models.CharField(max_length=40, null=True)  # text NULL,
+#     # subscriptionID = models.ForeignKey(Subscription, on_delete=models.CASCADE,
+#     #                                    blank=True)  # integer REFERENCES Subsciption (SubscriptionID ) onDelete = ?
+
+
+class CustomUser(AbstractUser):
+    username = None
+    email = models.EmailField(_('email address'), unique=True)
     XP_points = models.PositiveIntegerField(default=0)  # integer,
-    subsctiptionID = models.ForeignKey(Subscription, on_delete=models.CASCADE,
-                                       blank=True)  # integer REFERENCES Subsciption (SubscriptionID ) onDelete = ?
+    registrationDate = models.DateField(auto_now=True)  # date NOT NULL,
+
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = []
+
+    objects = CustomUserManager()
+
+    def __str__(self):
+        return self.email
+
+# @receiver(post_save, sender=User)
+# def create_user_profile(sender, instance, created, **kwargs):
+#     if created:
+#         Users.objects.create(user=instance)
+#
+# @receiver(post_save, sender=User)
+# def save_user_profile(sender, instance, **kwargs):
+#     instance.profile.save()
 
 
 class CardPack(models.Model):
@@ -67,7 +97,7 @@ class CardPack(models.Model):
 
     PackID = models.UUIDField(primary_key=True, default=uuid.uuid4, unique=True, editable=False)  # integer PRIMARY KEY,
     Name = models.CharField(max_length=20, unique=True)  # text NOT NULL UNIQUE,
-    createBy = models.ForeignKey(Users, on_delete=models.CASCADE)  # integer REFERENCES Users(UserID),
+    createBy = models.ForeignKey(CustomUser, on_delete=models.CASCADE)  # integer REFERENCES Users(UserID),
     creationDate = models.DateField(auto_now=True)  # date NOT NULL,
     public = models.BooleanField()  # boolean NOT NULL,
     approved = models.BooleanField()  # boolean NOT NULL,
@@ -91,7 +121,7 @@ class FlashCard(models.Model):
 class UserPackStatus(models.Model):
     PackStatusID = models.UUIDField(primary_key=True, default=uuid.uuid4, unique=True,
                                     editable=False)  # integer PRIMARY KEY,
-    UserID = models.ForeignKey(Users, on_delete=models.CASCADE)  # integer REFERENCES Users (UserID),
+    UserID = models.ForeignKey(CustomUser, on_delete=models.CASCADE)  # integer REFERENCES Users (UserID),
     PackID = models.ForeignKey(CardPack, on_delete=models.CASCADE)  # integer REFERENCES CardPack(PackID),
     progress = models.IntegerField(blank=True, default=0)  # numeric NOT NULL,
     startDate = models.DateField(auto_now=True)  # date NOT NULL
