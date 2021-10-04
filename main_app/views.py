@@ -6,7 +6,7 @@ from .forms import CustomUserCreationForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 
-from .models import UserPackStatus, UserCardStatus,CardPack, FlashCard, UserCardStatus
+from .models import UserPackStatus, UserCardStatus, CardPack, FlashCard, UserCardStatus
 import datetime
 from django.http.response import JsonResponse
 
@@ -79,35 +79,40 @@ def get_next_card(request):
     user_id = request.user.UserID
     pack_id = request.form.PackID
 
-    pack_status_id = UserPackStatus.objects.get(UserID = user_id,PackID = pack_id).PackStatusID
-    status_for_card = UserCardStatus.objects.filter(PackStatusIP = pack_status_id).order_by('lastReviewedTime')[0]
-    status_for_card.lastReviewedTime =  datetime.datetime.today()
+    pack_status_id = UserPackStatus.objects.get(UserID=user_id, PackID=pack_id).PackStatusID
+    status_for_card = UserCardStatus.objects.filter(PackStatusIP=pack_status_id).order_by('lastReviewedTime')[0]
+    status_for_card.lastReviewedTime = datetime.datetime.today()
 
     card = status_for_card.CardID
-    print(f"found card: {[card.sourceText,card.targetText]}")
-    card = {'sourceText':card.sourceText,'targetText':card.targetText}
+    print(f"found card: {[card.sourceText, card.targetText]}")
+    card = {'sourceText': card.sourceText, 'targetText': card.targetText}
     json_dump = JsonResponse.dumps(card)
     return json_dump
 
-@login_required
-def add_new_pack(request):
-    pack = CardPack(createBy=request.user,
-                    )
+
+# @login_required
+# def add_new_pack(request):
+#     pack = CardPack(createBy=request.user,
+#                     )
 
 
 @login_required
 def create_pack(request):
-    user = request.user
-    pack_name = request.form.PackName
-    pack_source_language = request.form.SourceLanguage
-    pack_target_language = request.form.TargetLanguage
-    number_of_words = request.form.NumberOfWords
+    if request.method == 'POST':
+        user = request.user
+        pack_name = request.POST['name']
+        pack_source_language = request.POST['source']
+        pack_target_language = request.POST['target']
+        number_of_words = request.POST['number_of_words']
 
-    if number_of_words==None:
-        number_of_words = 0
-    p = CardPack(Name = pack_name,createBy = user,public = False,
-            approved = False,sourceLanguage = pack_source_language,targetLanguage = pack_target_language,numberOfCards = number_of_words)
-    pack_status = UserPackStatus(UserID = user,PackID = p)
+        if number_of_words is None:
+            number_of_words = 0
+        p = CardPack(Name=pack_name, createBy=user, public=False,
+                     approved=False, sourceLanguage=pack_source_language, targetLanguage=pack_target_language,
+                     numberOfCards=number_of_words)
+        pack_status = UserPackStatus(UserID=user, PackID=p)
+        p.save()
+        pack_status.save()
     return redirect('home')
 
 @login_required
