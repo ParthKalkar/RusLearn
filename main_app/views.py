@@ -183,3 +183,9 @@ def delete_card(request):
         FlashCard.objects.filter(FlashCardID=card_id).delete()
     return redirect('home')
 
+def view_card(request):
+    if request.method == 'POST':
+        user = request.user
+        card = FlashCard.objects.filter(FlashCardID=request.POST['card_id'])[0]
+        card.lastReviewedTime = datetime.datetime.utcnow()
+
