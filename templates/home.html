@@ -87,14 +87,125 @@
                     <h5 class="card-title col">{{p.Name}}</h5>
                     <p class="card-text col d-flex justify-content-end">
                         <button type="button" class="btn btn-secondary m-2" data-bs-toggle="modal"
-                                data-bs-target="#editPackModal">
-                            Edit<br><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                data-bs-target="#editPackModal{{p.PackID}}">
+                            Edit <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                         </button>
                         <button type="button" class="btn btn-success m-2" data-bs-toggle="modal"
                                 data-bs-target="#reviewPackModal">
-                            Review<br><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                            Review <i class="fa fa-eye" aria-hidden="true"></i>
                         </button>
                     </p>
+                </div>
+            </div>
+            <!-- Edit Pack Modal -->
+
+            <div class="modal fade" id="editPackModal{{p.PackID}}" tabindex="-1" aria-labelledby="editPackModalTitle"
+                 aria-hidden="true">
+                <div class="modal-dialog modal-l">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="editPackModalTitle">{{p.Name}}</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body" id="editPackModalBody">
+                            {% for x in flash_cards %}
+                            {% if x.0 == p.PackID %}
+
+                            <ul>
+                                {% for i in x.1 %}
+                                <li>
+                                    <span>{{i.sourceText}}</span> - <span>{{i.targetText}}</span>
+                                    <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
+                                            data-bs-target="#">
+                                        Edit <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                            data-bs-target="#">
+                                        Delete <span><i class="fa fa-times" aria-hidden="true"></i>
+                                    </button>
+
+                                    </span>
+                                </li>
+                                {% endfor %}
+
+                            </ul>
+
+                            {% endif %}
+                            {% endfor %}
+                            {% for x in empty_packs %}
+                            {% if x == p.PackID %}
+                            <p>This pack doesn't contain any cards yet.</p>
+                            {% endif %}
+                            {% endfor %}
+                            <form action="">
+                                <!-- <input type="text" name=text id="txt" required placeholder="Package name"> -->
+                                <button type="button" class="btn btn-list btn-success" data-bs-toggle="modal"
+                                        data-bs-target="#addCardModal{{p.PackID}}">
+                                    <i class="fa fa-plus-circle" aria-hidden="true"></i> Add flashcards
+                                </button>
+                            </form>
+
+                        </div>
+
+                        <div class="modal-footer">
+                            <form action="/delete_pack" method="post">
+                                {% csrf_token %}
+                                <input class="visually-hidden" type="text" name="pack_id" value="{{p.PackID}}">
+                                <button type="submit" class="btn btn-danger">Delete pack</button>
+                            </form>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add card modal -->
+
+            <div class="modal fade" id="addCardModal{{p.PackID}}" tabindex="-1" aria-labelledby="#addCardModalTitle"
+                 aria-hidden="true">
+                <div class="modal-dialog modal-xl">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="addCardModalTitle">Add Cards to "{{p.Name}}"</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <form action="/add_card" id="newCardForm" method="post">
+                            {% csrf_token %}
+
+                            <div class="modal-body">
+                                <div class="container" id="newCardContainer">
+                                    <div class="row" id="newCardContainerRow">
+                                        <div class="col" id="newCardContainerCol">
+                                            <input type="text" name="pack_id" value="{{p.PackID}}"
+                                                   class="visually-hidden">
+                                            <label for="newCardPic">Choose an optional picture for your card</label>
+                                            <input type="file" name="newCardPic" id="newCardPic"
+                                                   accept="image/png, image/jpeg" class="form-control m-1"><br>
+                                            <input type="text" placeholder="Source word of the new card"
+                                                   id="newCardSourceWord" name="source_text"
+                                                   class="form-control m-1"><br>
+                                            <input type="text" placeholder="Target word of the new card"
+                                                   id="newCardTargetWord" name="target_text"
+                                                   class="form-control m-1"><br>
+                                        </div>
+
+                                        <div class="col" id="newCardContainerCol2">
+                                            <p>Batch-input new cards</p>
+                                            <textarea placeholder="For example:&#10;яблоко - apple&#10;банан - banana"
+                                                      id="newCardBatchInput" rows="50" cols="50"
+                                                      class="form-control m-1 disabled"></textarea><br>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Create</button>
+                            </div>
+                        </form>
+
+                    </div>
                 </div>
             </div>
             {% endfor %}
@@ -151,44 +262,6 @@
     </div>
 </div>
 
-<!-- Edit Pack Modal -->
-
-<div class="modal fade" id="editPackModal" tabindex="-1" aria-labelledby="editPackModalTitle" aria-hidden="true">
-    <div class="modal-dialog modal-xl">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="editPackModalTitle">Pack Name</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body" id="editPackModalBody">
-                <ul>
-                    <li>
-                        <span>Source Word</span> - <span>Target Word</span>
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#">
-                            Edit<br><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                        </button>
-                        <span><i class="fa fa-times" aria-hidden="true"></i>
-                            </span>
-                    </li>
-                </ul>
-
-                <form action="">
-                    <!-- <input type="text" name=text id="txt" required placeholder="Package name"> -->
-                    <button type="button" class="btn btn-list btn-primary" data-bs-toggle="modal"
-                            data-bs-target="#addCardModal">
-                        <i class="fa fa-plus-circle" aria-hidden="true"></i>
-                    </button>
-                </form>
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-        </div>
-    </div>
-</div>
-
 <!-- Review Pack Modal -->
 
 <div class="modal fade" id="reviewPackModal" tabindex="-1" aria-labelledby="reviewPackModalTitle"
@@ -208,46 +281,6 @@
                 </div>
             </div>
         </label>
-    </div>
-</div>
-
-<!-- Add card modal -->
-
-<div class="modal fade" id="addCardModal" tabindex="-1" aria-labelledby="#addCardModalTitle" aria-hidden="true">
-    <div class="modal-dialog modal-xl">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="addCardModalTitle">Add Card</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form action="" id="newCardForm">
-                    <div class="container" id="newCardContainer">
-                        <div class="row" id="newCardContainerRow">
-                            <div class="col" id="newCardContainerCol">
-                                <label for="newCardPic">Choose an optional picture for your card</label>
-                                <input type="file" name="newCardPic" id="newCardPic"
-                                       accept="image/png, image/jpeg"><br>
-                                <input type="text" placeholder="Source word of the new card"
-                                       id="newCardSourceWord"><br>
-                                <input type="text" placeholder="Target word of the new card"
-                                       id="newCardTargetWord"><br>
-                            </div>
-
-                            <div class="col" id="newCardContainerCol">
-                                <p>Batch-input new cards</p>
-                                <textarea placeholder="For example:&#10;яблоко - apple&#10;банан - banana"
-                                          id="newCardBatchInput" rows="50" cols="50"></textarea><br>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Create</button>
-            </div>
-        </div>
     </div>
 </div>
 

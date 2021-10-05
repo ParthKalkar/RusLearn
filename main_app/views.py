@@ -18,9 +18,21 @@ from django.urls import reverse
 def home(request):
     user_profile = request.user
     packs = CardPack.objects.filter(createBy=request.user)
+    flash_cards = []
+    empty_packs = []
+    for i in packs:
+        tmp = FlashCard.objects.filter(pack=i)
+        flash_cards.append([i.PackID, tmp])
+        if len(list(tmp))==0:
+            empty_packs.append(i.PackID)
+
+
+    print(flash_cards)
     return render(request, 'home.html', context={
         'user_profile': user_profile,
-        'packs': packs
+        'packs': packs,
+        'flash_cards': flash_cards,
+        'empty_packs': empty_packs
     })
     # return HttpResponse('Hello, World!')
 
@@ -115,13 +127,20 @@ def create_pack(request):
         pack_status.save()
     return redirect('home')
 
+
 @login_required
 def add_card(request):
-    user = request.user
-    pack_name = request.form.PackName
-    pack_source_language = request.form.SourceLanguage
-    pack_target_language = request.form.TargetLanguage
-    number_of_words = request.form.NumberOfWords
+    if request.method == 'POST':
+        user = request.user
+        pack = CardPack.objects.filter(PackID=request.POST['pack_id'])[0]
+        source_text = request.POST['source_text']
+        target_text = request.POST['target_text']
+        card = FlashCard(pack=pack, sourceText=source_text, targetText=target_text)
+        card_status = UserCardStatus(PackStatusIP=UserPackStatus.objects.filter(PackID=pack, UserID=user)[0],
+                                     CardID=card, lastReviewedTime=datetime.datetime.utcnow(),
+                                     firstReviewedTime=datetime.datetime.today())
+        card.save()
+        card_status.save()
 
     '''FlashCard(models.Model):
     FlashCardID = models.UUIDField(primary_key=True, default=uuid.uuid4, unique=True,
@@ -144,6 +163,14 @@ def add_card(request):
     firstReviewedTime = models.DateField()
     '''
 
-    p = FlashCard()
-    pack_status = UserCardStatus()
+    # p = FlashCard()
+    # pack_status = UserCardStatus()
+    return redirect('home')
+
+
+@login_required
+def delete_pack(request):
+    if request.method == 'POST':
+        pack_id = request.POST['pack_id']
+        CardPack.objects.filter(PackID=pack_id).delete()
     return redirect('home')

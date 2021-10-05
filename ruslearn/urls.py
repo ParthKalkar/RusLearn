@@ -24,5 +24,7 @@ urlpatterns = [
     # path('accounts/', include('django.contrib.auth.urls')),
     path('logout', views.logout_request, name='logout'),
     path('accounts/login/', views.login_request, name='login'),
-    path('add_pack', views.create_pack, name='add_pack')
+    path('add_pack', views.create_pack, name='add_pack'),
+    path('delete_pack', views.delete_pack, name='delete_pack'),
+    path('add_card', views.add_card, name='add_card')
 ]

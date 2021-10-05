@@ -43,4 +43,8 @@ class CustomUserAdmin(UserAdmin):
 class AdminCardPack(admin.ModelAdmin):
     pass
 
+@admin.register(FlashCard)
+class AdminFlashCard(admin.ModelAdmin):
+    pass
+
 # admin.site.register(CustomUser, CustomUserAdmin)
