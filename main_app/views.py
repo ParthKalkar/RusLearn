@@ -174,3 +174,12 @@ def delete_pack(request):
         pack_id = request.POST['pack_id']
         CardPack.objects.filter(PackID=pack_id).delete()
     return redirect('home')
+
+
+@login_required
+def delete_card(request):
+    if request.method == 'POST':
+        card_id = request.POST['card_id']
+        FlashCard.objects.filter(FlashCardID=card_id).delete()
+    return redirect('home')
+
