@@ -102,7 +102,7 @@ class CardPack(models.Model):
     public = models.BooleanField()  # boolean NOT NULL,
     approved = models.BooleanField()  # boolean NOT NULL,
     rating = models.IntegerField(blank=True, default=0)  # numeric NULL,
-    numberOfCards = models.IntegerField()  # integer NOT NULL,
+    numberOfCards = models.IntegerField(default=0)  # integer NOT NULL,
     sourceLanguage = models.CharField(max_length=2, choices=LANGUAGE)  # language NOT NULL,
     targetLanguage = models.CharField(max_length=2, choices=LANGUAGE)  # language NOT NULL,
 
@@ -134,7 +134,7 @@ class UserCardStatus(models.Model):
                                      on_delete=models.CASCADE)  # integer REFERENCES UserPackCard (PackStatusID),
     CardID = models.ForeignKey(FlashCard, on_delete=models.CASCADE)  # integer REFERENCES FlashCard (FlashCardID),
     cardStrength = models.FloatField(default=0)  # numeric NOT NULL,
-    lastReviewedTime = models.DateField()  # date NOT NULL,
+    lastReviewedTime = models.DateTimeField()  # date NOT NULL,
     firstReviewedTime = models.DateField()  # date NOT NULL
 
 
