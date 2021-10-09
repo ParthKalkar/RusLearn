@@ -47,4 +47,8 @@ class AdminCardPack(admin.ModelAdmin):
 class AdminFlashCard(admin.ModelAdmin):
     pass
 
+@admin.register(UserCardStatus)
+class AdminUserCardStatus(admin.ModelAdmin):
+    pass
+
 # admin.site.register(CustomUser, CustomUserAdmin)

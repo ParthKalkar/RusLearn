@@ -197,7 +197,7 @@
                                         <div class="col" id="newCardContainerCol2">
                                             <p>Batch-input new cards</p>
                                             <textarea placeholder="For example:&#10;яблоко - apple&#10;банан - banana"
-                                                      id="newCardBatchInput" rows="50" cols="50"
+                                                      id="newCardBatchInput" rows="50" cols="50" name="batch_input"
                                                       class="form-control m-1 disabled"></textarea><br>
                                         </div>
                                     </div>
@@ -210,6 +210,37 @@
                         </form>
 
                     </div>
+                </div>
+            </div>
+
+            <!-- Review Pack Modal -->
+
+            <div class="modal fade" id="reviewPackModal" tabindex="-1" aria-labelledby="reviewPackModalTitle"
+                aria-hidden="true">
+                <div class="modal-dialog modal-xl" id="reviewPackModalDialog">
+                    <label class="modal-content" id="reviewPackModalContent">
+                        <input type="checkbox" id="reviewPackModalCheckBox">
+                        <div class="flip-card">
+                            <div class="front" id="card_front">
+                                <img src="images/apple.png" alt="" width="20%" height="20%"/>
+                                {% for i in next_card %}
+                                {% if i.0 == p.PackID %}
+                                    <p class="lead">{{i.1.sourceText}}</p>
+                                {% endif %}
+                                {% endfor %}
+                                <p class='text-small text-muted'>Click to flip</p>
+                            </div>
+                            <div class="back" id="card_back">
+                                {% for i in next_card %}
+                                {% if i.0 == p.PackID %}
+                                    <h2 class="m-4">{{i.1.targetText}}</h2>
+                                {% endif %}
+                                {% endfor %}
+                                <hr/>
+                                <p class="click text-muted">Click to see another card</p>
+                            </div>
+                        </div>
+                    </label>
                 </div>
             </div>
             {% endfor %}
@@ -266,28 +297,6 @@
     </div>
 </div>
 
-<!-- Review Pack Modal -->
-
-<div class="modal fade" id="reviewPackModal" tabindex="-1" aria-labelledby="reviewPackModalTitle"
-     aria-hidden="true">
-    <div class="modal-dialog modal-xl" id="reviewPackModalDialog">
-        <label class="modal-content" id="reviewPackModalContent">
-            <input type="checkbox" id="reviewPackModalCheckBox">
-            <div class="flip-card">
-                <div class="front" id="card_front">
-                    <img src="images/apple.png" alt="" width="20%" height="20%"/>
-                    <p>Click to flip</p>
-                </div>
-                <div class="back" id="card_back">
-                    <h1>Яблоко</h1>
-                    <hr/>
-                    <p class="click">Click to flip</p>
-                </div>
-            </div>
-        </label>
-    </div>
-</div>
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
         crossorigin="anonymous"></script>
@@ -302,12 +311,20 @@
 $(function(){
     
     $('#reviewPackModalCheckBox').on('click', (event)=>{
-        console.log("wiouw")
-        $.ajax({type: 'GET',
-        url: 'view_card',
-        success: (response)=>{console.log("success.")},
-        error: (response)=>{console.log("error.")}
-    })
+        if($('#reviewPackModalCheckBox').is(":checked")){
+            console.log("POST card got viewed")
+            $.ajax({type: 'GET',
+            url: 'view_card',
+            success: (response)=>{console.log("success.")},
+            error: (response)=>{console.log("error.")}
+        })
+        
+        
+        }
+        else
+        {
+            console.log('Loaded new card.')
+        }
     })
 })
 </script>

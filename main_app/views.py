@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.db import reset_queries
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
@@ -12,7 +13,14 @@ from django.http.response import JsonResponse
 
 # Create your views here.
 from django.urls import reverse
+import regex
 
+
+def get_last_card(request, pack):
+    pack_status_id = UserPackStatus.objects.get(UserID=request.user, PackID=pack).PackStatusID
+    status_for_card = UserCardStatus.objects.filter(PackStatusIP=pack_status_id).order_by('lastReviewedTime')[0]
+    # status_for_card.lastReviewedTime = datetime.datetime.today()
+    return status_for_card.CardID
 
 @login_required
 def home(request):
@@ -20,11 +28,15 @@ def home(request):
     packs = CardPack.objects.filter(createBy=request.user)
     flash_cards = []
     empty_packs = []
+    next_card = []
     for i in packs:
         tmp = FlashCard.objects.filter(pack=i)
         flash_cards.append([i.PackID, tmp])
         if len(list(tmp))==0:
             empty_packs.append(i.PackID)
+        else:
+            next_card.append([i.PackID, get_last_card(request, i)])
+            # pass
 
 
     print(flash_cards)
@@ -32,7 +44,8 @@ def home(request):
         'user_profile': user_profile,
         'packs': packs,
         'flash_cards': flash_cards,
-        'empty_packs': empty_packs
+        'empty_packs': empty_packs, 
+        'next_card': next_card
     })
     # return HttpResponse('Hello, World!')
 
@@ -135,10 +148,16 @@ def add_card(request):
         pack = CardPack.objects.filter(PackID=request.POST['pack_id'])[0]
         source_text = request.POST['source_text']
         target_text = request.POST['target_text']
+
+        # print(request.POST['batch_input'])
+        re = regex.match(r"(\p{L}|\d)+(?: )*-(?: )*(\p{L}|\d)+", request.POST['batch_input'])
+        print(re)
         card = FlashCard(pack=pack, sourceText=source_text, targetText=target_text)
         card_status = UserCardStatus(PackStatusIP=UserPackStatus.objects.filter(PackID=pack, UserID=user)[0],
-                                     CardID=card, lastReviewedTime=datetime.datetime.utcnow(),
-                                     firstReviewedTime=datetime.datetime.today())
+                                     CardID=card, 
+                                     # lastReviewedTime=datetime.datetime.today(),
+                                     # firstReviewedTime=datetime.datetime.today()
+                                     )
         card.save()
         card_status.save()
 
@@ -184,8 +203,8 @@ def delete_card(request):
     return redirect('home')
 
 def view_card(request):
-    if request.method == 'POST':
-        user = request.user
-        card = FlashCard.objects.filter(FlashCardID=request.POST['card_id'])[0]
-        card.lastReviewedTime = datetime.datetime.utcnow()
+    
+    user = request.user
+    card = FlashCard.objects.filter(FlashCardID=request.POST['card_id'])[0]
+    card.lastReviewedTime = datetime.datetime.utcnow()
 
