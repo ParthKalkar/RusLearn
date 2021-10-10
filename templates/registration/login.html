@@ -46,7 +46,7 @@
                     </div>
                 </div>
             </form>
-            {% if form.errors %}
+            {% if form.errors or form.error_messages %}
             <div class="row mt-2 pt-2">
                 <div class="col">
                     <div class="alert alert-danger d-flex align-items-center" role="alert">
@@ -55,6 +55,7 @@
                         </svg>
                         <div>
                             {{ form.errors }}
+                            {{ form.error_messages}}
                         </div>
                     </div>
                 </div>

@@ -94,10 +94,13 @@ def login_request(request):
                 login(request, user)
                 return redirect(reverse('home'))
         else:
-            messages.error(request, 'username or password not correct')     
+            messages.error(request, 'username or password not correct')
+            print(form.error_messages)    
+            print(form.errors)
     else:
         form = AuthenticationForm()
     register_form = CustomUserCreationForm()
+    print(form.errors)
     return render(request, 'registration/login.html', {'form': form, 'register_form': register_form})
 
 
