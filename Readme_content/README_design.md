@@ -2,16 +2,16 @@
 
 ## Table of contents
 - [Project description](../README.md)
-- [Business Goals and Objectives](../README_buisiness_goals.md)
-- [Requirements](Readme_content/README_req.md)
+- [Business Goals and Objectives](./README_buisiness_goals.md)
+- [Requirements](./README_req.md)
 - Design
     - Sample UML diagrams of the features
         - Sequence diagram
         - Use-Case Diagram
     - Pattern
     - SOLID
-- [Architecture](Readme_content/README_arch.md)
-- [Code](Readme_content/README_code.md)
+- [Architecture](./README_arch.md)
+- [Code](./README_code.md)
 ---
 
 ## Sample UML diagrams of the features

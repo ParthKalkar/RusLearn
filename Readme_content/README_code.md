@@ -2,10 +2,10 @@
 
 ## Table of contents
 - [Project description](../README.md)
-- [Business Goals and Objectives](../README_buisiness_goals.md)
-- [Requirements](Readme_content/README_req.md)
-- [Design](Readme_content/README_design.md)
-- [Architecture](Readme_content/README_arch.md)
+- [Business Goals and Objectives](./README_buisiness_goals.md)
+- [Requirements](./README_req.md)
+- [Design](./README_design.md)
+- [Architecture](./README_arch.md)
 - Code
     - Video demonstration
 ---

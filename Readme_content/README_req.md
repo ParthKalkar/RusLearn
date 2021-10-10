@@ -2,16 +2,16 @@
 
 ## Table of contents
 - [Project description](../README.md)
-- [Business Goals and Objectives](../README_buisiness_goals.md)
+- [Business Goals and Objectives](./README_buisiness_goals.md)
 - Requirements
     - Requirement Analysis and Specifications
         - Features
         - User Stories
     - Quality attributes (non-functional requirements)
 
-- [Design](Readme_content/README_design.md)
-- [Architecture](Readme_content/README_arch.md)
-- [Code](Readme_content/README_code.md)
+- [Design](./README_design.md)
+- [Architecture](./README_arch.md)
+- [Code](./README_code.md)
 ---
 
 ## Requirement Analysis and Specifications

@@ -9,10 +9,10 @@
         - Business goals
         - Constraints
 
-- [Requirements](Readme_content/README_req.md) 
-- [Design](Readme_content/README_design.md)
-- [Architecture](Readme_content/README_arch.md)
-- [Code](Readme_content/README_code.md)
+- [Requirements](./README_req.md) 
+- [Design](./README_design.md)
+- [Architecture](./README_arch.md)
+- [Code](./README_code.md)
 ---
 
 ## Business relevance:
