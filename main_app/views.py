@@ -7,7 +7,7 @@ from .forms import CustomUserCreationForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 
-from .models import UserPackStatus, UserCardStatus, CardPack, FlashCard, UserCardStatus
+from .models import UserPackStatus, UserCardStatus, CardPack, FlashCard, UserCardStatus, language_list
 import datetime
 from django.http.response import JsonResponse
 
@@ -45,7 +45,8 @@ def home(request):
         'packs': packs,
         'flash_cards': flash_cards,
         'empty_packs': empty_packs, 
-        'next_card': next_card
+        'next_card': next_card, 
+        'language_list': language_list()
     })
     # return HttpResponse('Hello, World!')
 

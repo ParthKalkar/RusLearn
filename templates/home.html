@@ -13,7 +13,7 @@
 </head>
 
 <body>
-<nav class="navbar navbar-dark bg-dark mb-3">
+<nav class="navbar navbar-dark bg-dark mb-3 shadow">
     <div class="container-fluid">
         <a class="navbar-brand h6" href="#">Welcome to <span class="text-secondary">Rus</span><span
                 class="text-primary">Lea</span><span
@@ -57,7 +57,7 @@
         <div class="col">
             <form action="" class="d-flex justify-content-end">
                 <!-- <input type="text" name=text id="txt" required placeholder="Package name"> -->
-                <button type="button" class="btn btn-list btn-primary text-end" data-bs-toggle="modal"
+                <button type="button" class="btn btn-list btn-primary text-end shadow" data-bs-toggle="modal"
                         data-bs-target=#addPackModal>Add Card Pack
                     <i class="fa fa-plus-circle" aria-hidden="true"></i>
                 </button>
@@ -67,27 +67,17 @@
     </div>
     <div class="row">
         <div class="col">
-            <!--            <div class="pack_container">-->
-            <!--                <ul>-->
-            <!--                    <li><span id="packName">Pack Name</span>-->
-            <!--                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"-->
-            <!--                                data-bs-target="#editPackModal">-->
-            <!--                            Edit<br><i class="fa fa-pencil-square-o" aria-hidden="true"></i>-->
-            <!--                        </button>-->
-            <!--                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"-->
-            <!--                                data-bs-target="#reviewPackModal">-->
-            <!--                            Review<br><i class="fa fa-pencil-square-o" aria-hidden="true"></i>-->
-            <!--                        </button>-->
-
-            <!--                        <span>x</span>-->
-            <!--                    </li>-->
-            <!--                </ul>-->
-            <!--            </div>-->
             {% if packs %}
             {% for p in packs %}
             <div class="card bg-light m-3 shadow">
                 <div class="card-body row">
-                    <h5 class="card-title col">{{p.Name}}</h5>
+                <div class="col">
+                    <h5 class="card-title">{{p.Name}}</h5>
+                    <p class="text-muted">{% for x in language_list %}{% if x.0 == p.sourceLanguage %}{{x.1}}{% endif %}{% endfor %}  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-right" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M1 11.5a.5.5 0 0 0 .5.5h11.793l-3.147 3.146a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 11H1.5a.5.5 0 0 0-.5.5zm14-7a.5.5 0 0 1-.5.5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H14.5a.5.5 0 0 1 .5.5z"/>
+</svg>  {% for x in language_list %}{% if x.0 == p.targetLanguage %}{{x.1}}{% endif %}{% endfor %}</p>
+                </div>
+                    
                     <p class="card-text col d-flex justify-content-end">
                         <button type="button" class="btn btn-secondary m-2" data-bs-toggle="modal"
                                 data-bs-target="#editPackModal{{p.PackID}}">
@@ -276,15 +266,24 @@
                             <div class="col" id="newPackContainerCol">
                                 <input type="text" placeholder="Name of the new pack" id="newPackName"
                                        class="form-control m-2" name="name">
-                                <input type="text" placeholder="Souce language of the new pack"
-                                       id="newPackSourceLang" class="form-control m-2" name="source">
-                                <input type="text" placeholder="Target language of the new pack"
-                                       id="newPackTargetLang" class="form-control m-2" name="target">
+                                <select class="form-select m-2" aria-label="Default select example" name="source" id="newPackSourceLang">
+                                    <option selected>Souce language of the new pack</option>
+                                    {% for i in language_list %}
+                                    <option value="{{i.0}}">{{i.1}}</option>
+                                    {% endfor %}
+                                </select>
+                                <select class="form-select m-2" aria-label="Default select example" name="target" id="newPackTargetLang">
+                                    <option selected>Target language of the new pack</option>
+                                    {% for i in language_list %}
+                                    <option value="{{i.0}}">{{i.1}}</option>
+                                    {% endfor %}
+                                </select>
+                                
                             </div>
                             <div class="col" id="newPackContainerColInit">
                                 <p>Automatically initiate your pack*</p>
                                 <input type="text" placeholder="Number of words" id="numberOfWords"
-                                       class="form-control m-2" name="number_of_words"><br>
+                                       class="form-control m-2" name="number_of_words" value="0"><br>
                                 <p class="text-muted">*: We will initiate your pack with the number of cards you input
                                     above. The cards
                                     will have random translation pairs from the languages you pick.</p>

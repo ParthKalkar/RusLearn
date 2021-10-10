@@ -7,6 +7,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import AbstractUser
 
 import uuid
+import googletrans
 
 '''class Questions(models.Model):
 	question_text=models.CharField(max_length = 200)
@@ -87,13 +88,16 @@ class CustomUser(AbstractUser):
 # def save_user_profile(sender, instance, **kwargs):
 #     instance.profile.save()
 
+def language_list():
+    tmp = googletrans.LANGUAGES
+    res = []
+    for key, val in tmp.items():
+        res.append((key, val[:1].upper()+val[1:], ))
+    return res
 
 class CardPack(models.Model):
     # CREATE TYPE language AS ENUM ('English', 'Russian');
-    LANGUAGE = [
-        ('EN', 'English'),
-        ('RU', 'Russian')
-    ]
+    LANGUAGE = language_list()
 
     PackID = models.UUIDField(primary_key=True, default=uuid.uuid4, unique=True, editable=False)  # integer PRIMARY KEY,
     Name = models.CharField(max_length=20, unique=True)  # text NOT NULL UNIQUE,
@@ -103,8 +107,8 @@ class CardPack(models.Model):
     approved = models.BooleanField()  # boolean NOT NULL,
     rating = models.IntegerField(blank=True, default=0)  # numeric NULL,
     numberOfCards = models.IntegerField(default=0)  # integer NOT NULL,
-    sourceLanguage = models.CharField(max_length=2, choices=LANGUAGE)  # language NOT NULL,
-    targetLanguage = models.CharField(max_length=2, choices=LANGUAGE)  # language NOT NULL,
+    sourceLanguage = models.CharField(max_length=5, choices=LANGUAGE)  # language NOT NULL,
+    targetLanguage = models.CharField(max_length=5, choices=LANGUAGE)  # language NOT NULL,
 
 
 class FlashCard(models.Model):
