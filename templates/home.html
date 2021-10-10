@@ -86,7 +86,7 @@
                         <button type="button" 
                                 class="btn btn-success m-2 {% for x in empty_packs %}{% if x == p.PackID %}disabled{% endif %}{% endfor %}" 
                                 data-bs-toggle="modal"
-                                data-bs-target="#reviewPackModal">
+                                data-bs-target="#reviewPackModal_{{p.PackID}}">
                             Review <i class="fa fa-eye" aria-hidden="true"></i>
                         </button>
                     </p>
@@ -209,7 +209,7 @@
 
             <!-- Review Pack Modal -->
 
-            <div class="modal fade" id="reviewPackModal" tabindex="-1" aria-labelledby="reviewPackModalTitle"
+            <div class="modal fade" id="reviewPackModal_{{p.PackID}}" tabindex="-1" aria-labelledby="reviewPackModalTitle"
                 aria-hidden="true">
                 <div class="modal-dialog modal-xl" id="reviewPackModalDialog">
                     <label class="modal-content" id="reviewPackModalContent">
