@@ -1,8 +1,8 @@
-name: Deploy master
+name: Deploy EB
 on:
   push:
     branches:
-    - master
+    - main
 
 jobs:
   build:
