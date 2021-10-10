@@ -217,7 +217,7 @@
                             data-pack-id="{{p.PackID}}" data-card-id="{% for i in next_card %}{% if i.0 == p.PackID %}{{i.1.FlashCardID}}{% endif %}{% endfor %}">
                         <div class="flip-card">
                             <div class="front" id="card_front">
-                                <img src="images/apple.png" alt="" width="20%" height="20%"/>
+                                <img src="images/apple.png" alt="" width="20%" height="20%" id="reviewImage_{{p.PackID}}"/>
                                 {% for i in next_card %}
                                 {% if i.0 == p.PackID %}
                                     <p class="lead" id="reviewSource_{{p.PackID}}">{{i.1.sourceText}}</p>
@@ -335,6 +335,10 @@ $(function(){
     $('.reviewPackModalCheckBoxJQuery').on('click', (event)=>{
         var pack_id = $(event.target).attr('data-pack-id');
         var card_id = $(event.target).attr('data-card-id');
+
+        
+
+
         if($('#reviewPackModalCheckBox_'+pack_id).is(":checked")){
             console.log("POST card got viewed")
 
@@ -362,6 +366,16 @@ $(function(){
             ContentType: 'application/json',
             success: (response)=>{
                 console.log("success.");
+                $.ajax({type: 'GET',
+                    url: `https://pixabay.com/api/?key=23791192-362bac30fb149b2afac39fe6f&q=`+response['source_text'].split(' ').join('+')+`&image_type=photo`,
+                    ContentType: 'application/json',
+                    success: (response)=>{
+                    console.log("success.");
+                    console.log(response['hits'][0]["webformatURL"]);
+                    $('#reviewImage_'+pack_id).attr('src', response['hits'][0]["webformatURL"]);
+                    },
+                    error: (response)=>{console.log("error.")}
+                });
                 setTimeout(()=>{
                     $('#reviewSource_'+pack_id).text(response['source_text']);
                     $('#reviewTarget_'+pack_id).text(response['target_text']);
