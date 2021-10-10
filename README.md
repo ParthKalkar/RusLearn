@@ -14,6 +14,8 @@ A user can select the “tutor” subscription tier, which instead of taking you
 
 In code section you can see more examples and video demo.
 
+![demo](./Docs/Demo/Demo.gif)
+
 ![main_ex](./Docs/Demo/MainEx.png)
 
 ![main_ex](./Docs/Demo/Main_page.png)
