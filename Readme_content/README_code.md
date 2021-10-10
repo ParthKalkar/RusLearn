@@ -9,4 +9,19 @@
 - Code
     - Video demonstration
 ---
+## Pictures
+![main_ex](../Docs/Demo/MainEx.png)
+
+![login](../Docs/Demo/LogIn_page.png)
+Login page
+
+![main_page](../Docs/Demo/Main_page.png)
+Main page
+
+![ex_1](../Docs/Demo/ex1.png)
+Card 1
+
+![ex_2](../Docs/Demo/ex2.png)
+Card 2
+
 ## Video demonstration

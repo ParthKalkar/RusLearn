@@ -11,6 +11,14 @@ effort of understanding these learning techniques by implementing everything int
 of focus in the short learning sessions. RusLearn also offers premium tier subscriptions, which offer you further high quality content with the flashcards, such as video, audio, and external links. 
 Moreover, you should know that RusLearn offers more than just flashcards for you to review. If you have confidence in your knowledge of a certain subject or language, you can contribute to the platform with your own flashcards and earn money with them! 
 A user can select the “tutor” subscription tier, which instead of taking your money, gives you money (depending on how well your flashcard packs are doing, and how popular they are).
+
+In code section you can see more examples.
+
+![main_ex](./Docs/Demo/MainEx.png)
+
+![main_ex](./Docs/Demo/Main_page.png)
+Main page
+
 ---
 ## Table of contents
 - Project description
