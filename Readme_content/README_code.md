@@ -25,3 +25,4 @@ Card 1
 Card 2
 
 ## Video demonstration
+![ex_2](../Docs/Demo/Demo.gif)
