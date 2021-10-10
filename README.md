@@ -1,6 +1,6 @@
 [![Pylint](https://github.com/ParthKalkar/RusLearn/actions/workflows/pylint.yml/badge.svg)](https://github.com/ParthKalkar/RusLearn/actions/workflows/pylint.yml)
 [![Django Tests](https://github.com/ParthKalkar/RusLearn/actions/workflows/django.yml/badge.svg)](https://github.com/ParthKalkar/RusLearn/actions/workflows/django.yml)
-[![Deployment](https://github.com/ParthKalkar/RusLearn/actions/workflows/deploy.yml/badge.svg)](https://github.com/ParthKalkar/RusLearn/actions/workflows/deploy.yml)
+[![Deploy EB](https://github.com/ParthKalkar/RusLearn/actions/workflows/deploy.yml/badge.svg)](https://github.com/ParthKalkar/RusLearn/actions/workflows/deploy.yml)
 [![GitHub stars](https://img.shields.io/github/stars/ParthKalkar/RusLearn)](https://github.com/ParthKalkar/RusLearn)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/yegor256/takes/blob/master/LICENSE.txt)
 # [RusLearn](http://ruslearn-dev.us-west-2.elasticbeanstalk.com/)
