@@ -158,6 +158,7 @@ def create_pack(request):
                     except Exception as e:
                         print(e)
                         if attempts==0:
+                            source_translation = word
                             break
             if pack_target_language != 'en':
                 # use re-attempts
@@ -170,6 +171,7 @@ def create_pack(request):
                     except Exception as e:
                         print(e)
                         if attempts==0:
+                            target_translation = word
                             break
 
             card = FlashCard(pack=p, sourceText=source_translation, targetText=target_translation)
