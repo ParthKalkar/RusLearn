@@ -29,5 +29,6 @@ urlpatterns = [
     path('add_card', views.add_card, name='add_card'),
     path('delete_card', views.delete_card, name='delete_card'),
     path('view_card', views.view_card, name='view_card'),
-    path('next_card', views.get_next_card, name='next_card')
+    path('next_card', views.get_next_card, name='next_card'),
+    path('subscriptions', views.subscription_page, name='subscriptions')
 ]

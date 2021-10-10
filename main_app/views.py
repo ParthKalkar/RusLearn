@@ -202,11 +202,19 @@ def delete_card(request):
         FlashCard.objects.filter(FlashCardID=card_id).delete()
     return redirect('home')
 
+@login_required
 def view_card(request):
     print(request.POST)
     print(dict(request.POST))
+    user = request.user
+    user.XP_points += 1
+    user.save()
     card = FlashCard.objects.filter(FlashCardID=request.POST.get('card_id'))[0]
     user_card_status = UserCardStatus.objects.filter(CardID=card)[0]
     user_card_status.save()
     return JsonResponse({'status': 'success.'})
+
+@login_required
+def subscription_page(request):
+    return render(request, 'subscriptions.html')
 
