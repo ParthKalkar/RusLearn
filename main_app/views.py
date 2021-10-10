@@ -178,7 +178,8 @@ def create_pack(request):
                         if attempts==0:
                             target_translation = word
                             break
-
+            if source_translation is None or target_translation is None or source_translation=="" or target_translation=="":
+                continue
             card = FlashCard(pack=p, sourceText=source_translation, targetText=target_translation)
             card_status = UserCardStatus(PackStatusIP=UserPackStatus.objects.filter(PackID=p, UserID=user)[0],
                                      CardID=card
