@@ -101,17 +101,17 @@ def login_request(request):
 
 @login_required
 def get_next_card(request):
-    user_id = request.user.UserID
-    pack_id = request.form.PackID
+    user_id = request.user
+    pack_id = request.POST['pack_id']
 
     pack_status_id = UserPackStatus.objects.get(UserID=user_id, PackID=pack_id).PackStatusID
     status_for_card = UserCardStatus.objects.filter(PackStatusIP=pack_status_id).order_by('lastReviewedTime')[0]
-    status_for_card.lastReviewedTime = datetime.datetime.today()
+    # status_for_card.lastReviewedTime = datetime.datetime.today()
 
     card = status_for_card.CardID
     print(f"found card: {[card.sourceText, card.targetText]}")
-    card = {'sourceText': card.sourceText, 'targetText': card.targetText}
-    json_dump = JsonResponse.dumps(card)
+    card = {'source_text': card.sourceText, 'target_text': card.targetText, 'card_id': card.FlashCardID}
+    json_dump = JsonResponse(card)
     return json_dump
 
 
@@ -203,8 +203,10 @@ def delete_card(request):
     return redirect('home')
 
 def view_card(request):
-    
-    user = request.user
-    card = FlashCard.objects.filter(FlashCardID=request.POST['card_id'])[0]
-    card.lastReviewedTime = datetime.datetime.utcnow()
+    print(request.POST)
+    print(dict(request.POST))
+    card = FlashCard.objects.filter(FlashCardID=request.POST.get('card_id'))[0]
+    user_card_status = UserCardStatus.objects.filter(CardID=card)[0]
+    user_card_status.save()
+    return JsonResponse({'status': 'success.'})
 
