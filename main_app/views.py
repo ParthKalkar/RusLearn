@@ -55,6 +55,7 @@ def home(request):
 def register(request):
     if request.user.is_authenticated:
         return redirect('home')
+    form = None
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
         print("form received")
@@ -67,7 +68,8 @@ def register(request):
             login(request, user)
             return redirect('home')
         messages.error(request, "not valid")
-    form = CustomUserCreationForm(request.POST)
+    if form is None:
+        form = CustomUserCreationForm(request.POST)
     context = {
         'register_form': form,
         'form': AuthenticationForm()
@@ -81,6 +83,7 @@ def logout_request(request):
 
 
 def login_request(request):
+    form = None
     if request.method == 'POST':
         form = AuthenticationForm(request.POST)
         username = request.POST['username']
@@ -91,13 +94,10 @@ def login_request(request):
                 login(request, user)
                 return redirect(reverse('home'))
         else:
-            messages.error(request, 'username or password not correct')
-            return redirect(reverse('login'))
-
-
+            messages.error(request, 'username or password not correct')     
     else:
-        form = AuthenticationForm(request.POST)
-        register_form = CustomUserCreationForm()
+        form = AuthenticationForm()
+    register_form = CustomUserCreationForm()
     return render(request, 'registration/login.html', {'form': form, 'register_form': register_form})
 
 
