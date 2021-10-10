@@ -22,6 +22,5 @@ jobs:
         aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         application_name: ruslearn
         environment_name: ruslearn-dev
-        version_label: ${GITHUB_REF#refs/heads/}.${GITHUB_SHA}
         region: us-west-2
         deployment_package: deploy.zip
