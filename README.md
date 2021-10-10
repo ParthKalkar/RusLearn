@@ -108,10 +108,7 @@ Make sure you have Python installed:
 ```commandline
 sudo apt-get install python3 python3-pip virtualenv
 ```
-Make sure you have Node.JS installed:
-```commandline
-sudo apt-get install npm
-```
+
 In the project's directory, create a Python virtual environment and activate it:
 ```commandline
 virtualenv venv && source venv/bin/activate
@@ -128,17 +125,13 @@ Once the migrations are done, you will be able to run the backend server locally
 ```commandline
 python3 manage.py runserver
 ```
-To run the frontend React server, open the terminal in the `react-app` directory and run:
-```
-npm start
-```
+
 
 ### Deployment guide
 You can deploy the website on Amazon Web Services Elastic Beanstalk, by executing the next steps:
-1. Make 2 `.zip` files from the source code, the first file should contain the `react-app` directory, the second file should contain all the files except the directory of the first file.
-2. Deploy the files to separate Elastic Beanstalk environments.
-3. In the React App environment, specify the environment URL of your backend server in main.js.
-4. In the Django environment, add the current environment URL in the `ALLOWED_HOSTS` in the `settings.py` file.
+1. Make a `.zip` file from the source code, the file should contain all the contents of the repo.
+2. Deploy the file to an Elastic Beanstalk environment.
+4. After the first deployment, add the current environment URL in the `ALLOWED_HOSTS` in the `settings.py` file, and then deploy again.
 ---
 ## Authors:
 *[Rafik Hachana](https://github.com/RafikHachana)*, *[Parth Kalkar](https://github.com/ParthKalkar)*, *[Danil Shalagin](https://github.com/danilXX2000)*, *[Truong Nguyen](https://github.com/enestydarealmc)*
