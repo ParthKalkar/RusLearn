@@ -6,8 +6,43 @@
     <meta charset="utf-8" />
     <link rel="shortcut icon" href="/assets/img/favicon.ico">
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">    <link rel="stylesheet" href="{% static 'pricing-table.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 </head>
 <body>
+<nav class="navbar navbar-dark bg-dark mb-3 shadow">
+    <div class="container-fluid">
+        <a class="navbar-brand h6" href="/">Welcome to <span class="text-secondary">Rus</span><span
+                class="text-primary">Lea</span><span
+                class="text-danger">rn</span>!</a>
+        <div class="dropdown d-flex me-3">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                {{user}}
+            </button>
+            <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
+
+                <hr/>
+                <li><a class="dropdown-item disabled" href="#">XP Points : {{user_profile.XP_points}}</a></li>
+                <li><a class="dropdown-item disabled" href="#">Registered on {{user_profile.registrationDate}}</a></li>
+                <hr/>
+                <li><a class="dropdown-item" href="subscriptions">View subscription plans</a></li>
+                <hr/>
+                <li><a class="dropdown-item" href="/logout">Log out
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                         class="bi bi-box-arrow-right m-1"
+                         viewBox="0 0 16 16">
+                        <path id="logout" fill-rule="evenodd"
+                              d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
+                        <path fill-rule="evenodd"
+                              d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+                    </svg>
+                </a></li>
+            </ul>
+        </div>
+    </div>
+
+</nav>
     <div class="pricing-plan-container">
         <section class="pricing-plan">
 
@@ -86,5 +121,14 @@
         </section>
 
     </div>
-    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+        crossorigin="anonymous"></script>
+
+        <script
+        src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous"></script>
+
+<script>
 </body>
