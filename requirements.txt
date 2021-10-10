@@ -18,7 +18,7 @@ docker-compose==1.25.5
 dockerpty==0.4.1
 docopt==0.6.2
 future==0.16.0
-googletrans==3.0.0
+googletrans==4.0.0-rc1
 gunicorn==20.1.0
 h11==0.9.0
 h2==3.2.0
@@ -50,3 +50,4 @@ texttable==1.6.4
 urllib3==1.26.6
 wcwidth==0.1.9
 websocket-client==0.59.0
+random-word

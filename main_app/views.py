@@ -14,7 +14,8 @@ from django.http.response import JsonResponse
 # Create your views here.
 from django.urls import reverse
 import regex
-
+from random_word import RandomWords
+import googletrans
 
 def get_last_card(request, pack):
     pack_status_id = UserPackStatus.objects.get(UserID=request.user, PackID=pack).PackStatusID
@@ -139,6 +140,25 @@ def create_pack(request):
         pack_status = UserPackStatus(UserID=user, PackID=p)
         p.save()
         pack_status.save()
+
+        for i in range(int(number_of_words)):
+            word = RandomWords().get_random_word()
+            print(word)
+            source_translation = word
+            target_translation = word
+            translator = googletrans.Translator()
+            if pack_source_language != 'en':
+                source_translation = translator.translate(word, dest=pack_source_language, src='en').text
+            if pack_target_language != 'en':
+                target_translation = translator.translate(word, dest=pack_target_language, src='en').text
+
+            card = FlashCard(pack=p, sourceText=source_translation, targetText=target_translation)
+            card_status = UserCardStatus(PackStatusIP=UserPackStatus.objects.filter(PackID=p, UserID=user)[0],
+                                     CardID=card
+                                     )
+            card.save()
+            card_status.save()
+
     return redirect('home')
 
 
