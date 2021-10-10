@@ -46,7 +46,7 @@
                     </div>
                 </div>
             </form>
-            {% if (form.errors or form.error_messages) and posted %}
+            {% if form.errors or form.error_messages and posted %}
             <div class="row mt-2 pt-2">
                 <div class="col">
                     <div class="alert alert-danger d-flex align-items-center" role="alert">
