@@ -148,9 +148,29 @@ def create_pack(request):
             target_translation = word
             translator = googletrans.Translator()
             if pack_source_language != 'en':
-                source_translation = translator.translate(word, dest=pack_source_language, src='en').text
+                # use re-attempts
+                attempts = 10
+                while True:
+                    try:
+                        attempts -= 1
+                        source_translation = translator.translate(word, dest=pack_source_language, src='en').text
+                        break
+                    except Exception as e:
+                        print(e)
+                        if attempts==0:
+                            break
             if pack_target_language != 'en':
-                target_translation = translator.translate(word, dest=pack_target_language, src='en').text
+                # use re-attempts
+                attempts = 10
+                while True:
+                    try:
+                        attempts -= 1
+                        target_translation = translator.translate(word, dest=pack_target_language, src='en').text
+                        break
+                    except Exception as e:
+                        print(e)
+                        if attempts==0:
+                            break
 
             card = FlashCard(pack=p, sourceText=source_translation, targetText=target_translation)
             card_status = UserCardStatus(PackStatusIP=UserPackStatus.objects.filter(PackID=p, UserID=user)[0],
