@@ -84,7 +84,9 @@ def logout_request(request):
 
 def login_request(request):
     form = None
+    post = False
     if request.method == 'POST':
+        post = True
         form = AuthenticationForm(request.POST)
         username = request.POST['username']
         password = request.POST['password']
@@ -101,7 +103,7 @@ def login_request(request):
         form = AuthenticationForm()
     register_form = CustomUserCreationForm()
     print(form.errors)
-    return render(request, 'registration/login.html', {'form': form, 'register_form': register_form})
+    return render(request, 'registration/login.html', {'form': form, 'register_form': register_form, 'posted': post})
 
 
 @login_required

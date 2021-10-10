@@ -46,14 +46,14 @@
                     </div>
                 </div>
             </form>
-            {% if form.errors or form.error_messages %}
+            {% if (form.errors or form.error_messages) and posted %}
             <div class="row mt-2 pt-2">
                 <div class="col">
                     <div class="alert alert-danger d-flex align-items-center" role="alert">
                         <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
                             <use xlink:href="#exclamation-triangle-fill"/>
                         </svg>
-                        <div>
+                        <div>   
                             {{ form.errors }}
                             {{ form.error_messages}}
                         </div>
