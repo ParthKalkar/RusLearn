@@ -5,11 +5,11 @@
 - [Business Goals and Objectives](./README_buisiness_goals.md)
 - [Requirements](./README_req.md)
 - Design
-    - Sample UML diagrams of the features
+    - [Sample UML diagrams of the features](https://github.com/ParthKalkar/RusLearn/blob/main/Readme_content/README_design.md#sample-uml-diagrams-of-the-features)
         - Sequence diagram
         - Use-Case Diagram
-    - Pattern
-    - SOLID
+    - [Pattern](https://github.com/ParthKalkar/RusLearn/blob/main/Readme_content/README_design.md#pattern)
+    - [SOLID](https://github.com/ParthKalkar/RusLearn/blob/main/Readme_content/README_design.md#solid)
 - [Architecture](./README_arch.md)
 - [Code](./README_code.md)
 ---
@@ -37,7 +37,11 @@ On this moment, we follow 2 SOLID principles:
 
 All classes responsible have a single responsibility: store data. For example, the Users class stores data about users. It means models follow a single responsibility principle.
 
+![UML_class](../Docs/solid_1.png)
+
 3. Liskov Substitution
 
 The Liskov substitution principle states that if S is a subtype of T, then objects of type T may be replaced (or substituted) with objects of type S. 
 All classes in models file extend models.Model and all functions from base class can be applied to child class. Thus it follows Liskov Substitution.
+
+![UML_class](../Docs/solid_2.png)

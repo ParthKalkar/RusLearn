@@ -4,10 +4,10 @@
 - [Project description](../README.md)
 - [Business Goals and Objectives](./README_buisiness_goals.md)
 - Requirements
-    - Requirement Analysis and Specifications
+    - [Requirement Analysis and Specifications](https://github.com/ParthKalkar/RusLearn/blob/main/Readme_content/README_req.md#requirement-analysis-and-specifications)
         - Features
         - User Stories
-    - Quality attributes (non-functional requirements)
+    - [Quality attributes (non-functional requirements)](https://github.com/ParthKalkar/RusLearn/blob/main/Readme_content/README_req.md#quality-attributes-non-functional-requirements)
 
 - [Design](./README_design.md)
 - [Architecture](./README_arch.md)

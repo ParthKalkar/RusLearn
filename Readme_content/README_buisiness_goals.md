@@ -3,9 +3,9 @@
 ## Table of contents
 - [Project description](../README.md)
 - Business Goals and Objectives 
-    - Business Relevance
-    - Roles and responsibilities
-    - Architectural drivers
+    - [Business Relevance](https://github.com/ParthKalkar/RusLearn/blob/main/Readme_content/README_buisiness_goals.md#business-relevance)
+    - [Roles and responsibilities](https://github.com/ParthKalkar/RusLearn/blob/main/Readme_content/README_buisiness_goals.md#stakeholders)
+    - [Architectural drivers](https://github.com/ParthKalkar/RusLearn/blob/main/Readme_content/README_buisiness_goals.md#architectural-drivers)
         - Business goals
         - Constraints
 
