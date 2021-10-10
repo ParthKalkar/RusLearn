@@ -25,7 +25,6 @@ Main page
 ## Table of contents
 - Project description
     - [Glossary](https://github.com/ParthKalkar/RusLearn#glossary)
-    - [Progress](https://github.com/ParthKalkar/RusLearn#what-we-have-so-far)
     - [Developer's guide](https://github.com/ParthKalkar/RusLearn#developers-guide)
 	    - Technical stack
 	    - Installation guide
