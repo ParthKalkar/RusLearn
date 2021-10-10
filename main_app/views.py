@@ -151,8 +151,20 @@ def add_card(request):
         target_text = request.POST['target_text']
 
         # print(request.POST['batch_input'])
-        re = regex.match(r"(\p{L}|\d)+(?: )*-(?: )*(\p{L}|\d)+", request.POST['batch_input'])
-        print(re)
+        #re = regex.match(r"(\p{L}|\d)+(?: )*-(?: )*(\p{L}|\d)+", request.POST['batch_input'])
+        #print(re)
+
+        for match in request.POST['batch_input'].split("\n"):
+            print(f"Found batch input item : {match}")
+            tmp = match.split(" - ")
+            if len(tmp) != 2:
+                continue
+            card = FlashCard(pack=pack, sourceText=tmp[0], targetText=tmp[1])
+            card_status = UserCardStatus(PackStatusIP=UserPackStatus.objects.filter(PackID=pack, UserID=user)[0],
+                                     CardID=card
+                                     )
+            card.save()
+            card_status.save()
         card = FlashCard(pack=pack, sourceText=source_text, targetText=target_text)
         card_status = UserCardStatus(PackStatusIP=UserPackStatus.objects.filter(PackID=pack, UserID=user)[0],
                                      CardID=card, 
@@ -161,27 +173,6 @@ def add_card(request):
                                      )
         card.save()
         card_status.save()
-
-    '''FlashCard(models.Model):
-    FlashCardID = models.UUIDField(primary_key=True, default=uuid.uuid4, unique=True,
-                                   editable=False)  # integer PRIMARY KEY,
-    pack = models.ForeignKey(CardPack, on_delete=models.CASCADE)  # integer = # REFERENCES CardPack(PackID),
-    sourceText = models.TextField(max_length=100)  # text NOT NULL,
-    ImageID = models.TextField(max_length=50)  # text,
-    targetText = models.TextField(max_length=100)  # text NOT NULL,
-    sourceAudio = models.TextField(max_length=50)  # text,
-    targetAudio = models.TextField(max_length=50)  # text
-    
-    UserCardStatus(models.Model):
-    CardStatusID = models.UUIDField(primary_key=True, default=uuid.uuid4, unique=True,
-                                    editable=False)  # integer PRIMARY KEY,
-    PackStatusIP = models.ForeignKey(UserPackStatus,
-                                     on_delete=models.CASCADE)  # integer REFERENCES UserPackCard (PackStatusID),
-    CardID = models.ForeignKey(FlashCard, on_delete=models.CASCADE)  # integer REFERENCES FlashCard (FlashCardID),
-    cardStrength = models.FloatField(default=0)  # numeric NOT NULL,
-    lastReviewedTime = models.DateTimeField()  # date NOT NULL,
-    firstReviewedTime = models.DateField()
-    '''
 
     # p = FlashCard()
     # pack_status = UserCardStatus()
